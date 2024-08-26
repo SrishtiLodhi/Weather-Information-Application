@@ -43,32 +43,45 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({ localityId }) => {
     <div className="mt-4 p-2 border border-gray-300 rounded">
       <h2 className="text text-black font-bold mb-2">Weather Information</h2>
       {weatherData && weatherData.locality_weather_data ? (
-        <div className="text">
-          <p>
-            <strong>- Temperature:</strong>{" "}
-            {weatherData.locality_weather_data.temperature}°C
-          </p>
-          <div>
-            <strong>- Humidity:</strong>{" "}
-            {weatherData.locality_weather_data.humidity}%
-          </div>
-          <div>
-            <strong>- Wind Speed:</strong>{" "}
-            {weatherData.locality_weather_data.wind_speed} km/h
-          </div>
-          <div>
-            <strong>- Wind Direction:</strong>{" "}
-            {weatherData.locality_weather_data.wind_direction}°
-          </div>
-          <div>
-            <strong>- Rain Intensity:</strong>{" "}
-            {weatherData.locality_weather_data.rain_intensity} mm/h
-          </div>
-          <div>
-            <strong>- Rain Accumulation:</strong>{" "}
-            {weatherData.locality_weather_data.rain_accumulation} mm
-          </div>
-        </div>
+     <div className="text">
+     <p>
+       <strong>- Temperature:</strong>{" "}
+       {weatherData.locality_weather_data.temperature !== null
+         ? `${weatherData.locality_weather_data.temperature}°C`
+         : "Not Available"}
+     </p>
+     <div>
+       <strong>- Humidity:</strong>{" "}
+       {weatherData.locality_weather_data.humidity !== null
+         ? `${weatherData.locality_weather_data.humidity}%`
+         : "Not Available"}
+     </div>
+     <div>
+       <strong>- Wind Speed:</strong>{" "}
+       {weatherData.locality_weather_data.wind_speed !== null
+         ? `${weatherData.locality_weather_data.wind_speed} km/h`
+         : "Not Available"}
+     </div>
+     <div>
+       <strong>- Wind Direction:</strong>{" "}
+       {weatherData.locality_weather_data.wind_direction !== null
+         ? `${weatherData.locality_weather_data.wind_direction}°`
+         : "Not Available"}
+     </div>
+     <div>
+       <strong>- Rain Intensity:</strong>{" "}
+       {weatherData.locality_weather_data.rain_intensity !== null
+         ? `${weatherData.locality_weather_data.rain_intensity} mm/h`
+         : "Not Available"}
+     </div>
+     <div>
+       <strong>- Rain Accumulation:</strong>{" "}
+       {weatherData.locality_weather_data.rain_accumulation !== null
+         ? `${weatherData.locality_weather_data.rain_accumulation} mm`
+         : "Not Available"}
+     </div>
+   </div>
+   
       ) : (
         <p className="text">No weather data available</p>
       )}
