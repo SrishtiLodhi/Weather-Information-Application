@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather Info
 
-## Getting Started
+This project is a weather information application which allows users to search for weather information based on locality names, using the Free Weather API provided by WeatherUnion.
 
-First, run the development server:
+## Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Autocomplete Functionality**: As the user types in the search box, autocomplete suggestions are provided based on locality names.
+- **Weather Information Display**: Upon selecting a locality from the autocomplete suggestions, the user is redirected to a weather information page.
+- **Responsive Design**: The application is designed to be fully responsive, working seamlessly across all device sizes.
+- **Search Again Option**: Users can search for weather information for another location directly from the weather information page.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technology Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js (Latest Version)**: Used for server-side rendering and building the React application.
+- **TypeScript**: Ensures type safety and helps in writing clean, maintainable code.
+- **TailwindCSS**: Provides utility-first styling to achieve the desired UI/UX with minimal custom CSS.
+- **WeatherUnion API**: The application fetches weather data from the WeatherUnion API.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<h2>Getting Started</h2>
 
-## Learn More
+<p>Follow these steps to run the app on your local machine:</p>
 
-To learn more about Next.js, take a look at the following resources:
+<ol>
+  <li>Clone the repository:</li>
+</ol>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<pre><code>git clone https://github.com/SrishtiLodhi/Weather-Information-Application
+cd Weather-Information-Application
+</code></pre>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<ol start="2">
+  <li>Install dependencies:</li>
+</ol>
 
-## Deploy on Vercel
+<pre><code>npm install
+</code></pre>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<ol start="3">
+  <li>Start the development server:</li>
+</ol>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<pre><code>npm start
+</code></pre>
+
+<p>Open your browser and navigate to <a href="http://localhost:3000">http://localhost:3000</a> to access the app.</p>
