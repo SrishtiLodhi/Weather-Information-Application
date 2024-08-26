@@ -8,37 +8,50 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-.input-class{
-box-sizing: border-box;
-background: #FFFFFF;
-border: 1.81098px solid #D7D9DA;
-border-radius: 6rem;
-font-family: 'SF Pro Display';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-color: #92969B;
-padding: 0.5rem;
-padding-left: 1rem;
+.input-class {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1.81098px solid #d7d9da;
+  border-radius: 6rem;
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #92969b;
+  padding: 0.5rem;
+  padding-left: 1rem;
 }
 
-.heading{
-font-family: 'Product Sans';
-font-style: normal;
-font-weight: 700;
-line-height: 130%;
-color: #000000;
+.heading {
+  font-family: "Product Sans";
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  color: #000000;
 }
 
-.text{
-font-family: 'Product Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 130%;
-color: rgba(0, 0, 0, 0.6);
+.text {
+  font-family: "Product Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .input-class {
   padding-left: 2.5rem;
+}
+
+@media (max-width: 860px) {
+  .heading {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 585px) {
+  .heading {
+    font-size: 1.5rem;
+    text-align: center;
+  }
 }
