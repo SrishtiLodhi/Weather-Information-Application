@@ -1,50 +1,53 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import WeatherInfo from './WeatherInfo'; // Import WeatherInfo component
+import { locations } from './locations'; // Adjust the import path as needed
+import WeatherInfo from './WeatherInfo';
 
 const Autocomplete = () => {
   const [address, setAddress] = useState('');
   const [suggestions, setSuggestions] = useState<any[]>([]);
-  const [selectedLocation, setSelectedLocation] = useState<{ lat: number, lon: number } | null>(null);
+  const [selectedLocationId, setSelectedLocationId] = useState<string | null>(null);
 
   const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase();
+    setSelectedLocationId(null);
     setAddress(value);
 
     if (value.length > 2) {
-      const encodedAddress = encodeURIComponent(value);
-      const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodedAddress}&apiKey=9c327f9d05ce48c7a382c9ebb033ad29`;
-
-      axios.get(url)
-        .then(response => {
-          setSuggestions(response.data.features);
-          console.log(response);
-        })
-        .catch(err => {
-          console.error('Error fetching autocomplete suggestions', err);
-        });
+      const filteredSuggestions = locations.filter(location =>
+        location.localityName.toLowerCase().includes(value)
+      );
+      setSuggestions(filteredSuggestions);
     } else {
       setSuggestions([]);
     }
   };
 
-  const handleSuggestionClick = (suggestion: any) => {
-    const { lat, lon, formatted } = suggestion.properties;
-
-    setAddress(formatted);
-    setSelectedLocation({ lat, lon });
+  const handleSuggestionClick = (location: any) => {
+    setAddress(location.localityName);
+    setSelectedLocationId(location.localityId);
     setSuggestions([]);
   };
 
+
   return (
-    <div className="w-80 mx-auto">
-      <input 
-        type="text" 
-        value={address} 
-        onChange={handleAddressChange} 
-        placeholder="Enter address" 
-        className="w-full p-2 border border-gray-300 rounded"
-      />
+    <div className="flex justify-center flex-col max-w-96">
+  {/* <img src="/google.png" className='-my-12 w-96 h-64' alt="description" /> */}
+  <div className="relative w-full">
+  <input 
+    type="text" 
+    value={address} 
+    onChange={handleAddressChange} 
+    placeholder="Enter address" 
+    className="w-full pl-12 input-class" // Adjusted padding
+  />
+  <img 
+    src="/search.svg" 
+    className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" 
+    alt="Search" 
+  />
+</div>
+
+
       {suggestions.length > 0 && (
         <ul className="border border-gray-300 mt-1 max-h-48 overflow-y-auto p-0 list-none">
           {suggestions.map((suggestion, index) => (
@@ -53,12 +56,12 @@ const Autocomplete = () => {
               onClick={() => handleSuggestionClick(suggestion)}
               className="p-2 cursor-pointer hover:bg-gray-200"
             >
-              {suggestion.properties.formatted}
+              {suggestion.localityName}
             </li>
           ))}
         </ul>
       )}
-      {selectedLocation?.lat && <WeatherInfo localityId={selectedLocation.lat.toString()} />}
+      {selectedLocationId && <WeatherInfo localityId={selectedLocationId} />}
     </div>
   );
 };

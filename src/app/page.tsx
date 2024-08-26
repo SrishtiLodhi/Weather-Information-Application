@@ -8,6 +8,7 @@ import Autocomplete from '../app/components/Autocomplete'; // Ensure correct pat
 import { setLocation } from '../app/store/weatherSlice';
 import { store } from '../app/store/store'; // Ensure correct path
 import { LocationProvider, useLocation } from './context/LocationContext';
+import './globals.css'
 
 const Home = () => {
   const [suggestions, setSuggestions] = useState<string[]>(['New York', 'Los Angeles', 'Chicago']); // Replace with your actual data
@@ -21,9 +22,9 @@ const Home = () => {
 
   return (
  
-      <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-3xl mb-4">Weather App</h1>
-        <Autocomplete suggestions={suggestions} onSelect={handleSearch} />
+      <div className="flex flex-col items-center min-h-screen p-4">
+        <h1 className="text-5xl mb-4 heading">Weather App With Search Functionality</h1>
+        <Autocomplete />
       </div>
  
   );
